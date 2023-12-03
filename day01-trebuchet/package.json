@@ -1,0 +1,15 @@
+{
+  "name": "day01-trebuchet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "processInput01.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "words-to-numbers": "^1.5.1"
+  }
+}
