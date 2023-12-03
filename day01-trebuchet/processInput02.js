@@ -32,8 +32,10 @@ function analyzeInput(input) {
         //add number to counter
 
 
-
+    // console.log(input);
     const lines = input.split('\n');
+    
+    // console.log('lines:');
     // console.log(lines);
 
     //Possible number options
@@ -49,14 +51,34 @@ function analyzeInput(input) {
         //RegEx to check for the possibleNums
         const pattern = new RegExp(possibleNums.join('|'), 'g');
         const extractedWords = lines[i].match(pattern);
+        
+        // console.log('extracted words:')
         // console.log(extractedWords);
 
-        let firstNum = extractedWords.shift();
+        let firstNum = 0;
+        let lastNum = 0;
+        let isShort;
+        if (extractedWords.length > 1) {    
+            isShort = false;       
+            firstNum = extractedWords.shift();
+            // console.log(firstNum);
+            // console.log('extractedWords > 1');
+            // console.log(firstNum);
+            lastNum = extractedWords.pop();
+            // console.log(lastNum);
+        } else {
+            isShort = true;
+            firstNum = extractedWords[0];
+        }
+
+        // console.log('first and last num');
         // console.log(firstNum);
-        let lastNum = extractedWords.pop();
+        // console.log(lastNum);
 
         //NOTE: will probably need to implement doubling again
-    
+        function convertToNum (num) {
+            
+        }
         if (isNaN(Number(firstNum))) {
             firstNum = wordsToNumbers(firstNum).toString();
             // console.log(firstNum);
@@ -67,7 +89,13 @@ function analyzeInput(input) {
             // console.log(lastNum);
         }
 
-        const finalNum = Number(firstNum + lastNum);
+        let finalNum
+        if (isShort) {
+            finalNum = Number(firstNum + firstNum);
+        } else {
+            finalNum = Number(firstNum + lastNum);
+            // console.log(finalNum);
+        }
         // console.log(finalNum);
 
         counter = counter + finalNum;
